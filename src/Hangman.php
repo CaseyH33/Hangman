@@ -5,8 +5,9 @@
         private $guess;
         private $letters_guessed;
         private $hidden_word;
+        private $message;
 
-        function __construct($new_word, $starting_guess = 0, $letters_guessed = array(), $hidden_word = array())
+        function __construct($new_word, $starting_guess = 0, $letters_guessed = array(), $hidden_word = array(), $message = "")
         {
             $this->word = $new_word;
             $this->guess = $starting_guess;
@@ -16,6 +17,7 @@
             for($i =0; $i <= $length; $i++) {
                 array_push($this->hidden_word, '_');
             }
+            $this->message = $message;
         }
 
         function setWord($new_word)
@@ -40,7 +42,7 @@
 
         function setLettersGuessed($new_letter)
         {
-            $this->letters_guessed = array_push($this->letters_guessed, $new_letter);
+            array_push($this->letters_guessed, $new_letter);
         }
 
         function getLettersGuessed()
@@ -56,6 +58,16 @@
         function getHiddenWord()
         {
             return $this->hidden_word;
+        }
+
+        function setMessage($new_message)
+        {
+            $this->message = $new_message;
+        }
+
+        function getMessage()
+        {
+            return $this->message;
         }
 
         function wrongGuess()
